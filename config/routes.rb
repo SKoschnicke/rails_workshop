@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :contracts
+
   devise_for :users
   resources :users
 
