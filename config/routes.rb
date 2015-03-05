@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :tags
+
+  resources :timeentries
+
   devise_for :users
   resources :users
 

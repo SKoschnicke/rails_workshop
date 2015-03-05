@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305114300) do
+ActiveRecord::Schema.define(version: 20150305144125) do
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "tags_timeentries", id: false, force: :cascade do |t|
+    t.integer "timeentry_id", limit: 4, null: false
+    t.integer "tag_id",       limit: 4, null: false
+  end
+
+  create_table "timeentries", force: :cascade do |t|
+    t.time     "time"
+    t.date     "date"
+    t.integer  "user_id",     limit: 4
+    t.integer  "contract_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "timeentries", ["contract_id"], name: "index_timeentries_on_contract_id", using: :btree
+  add_index "timeentries", ["user_id"], name: "index_timeentries_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

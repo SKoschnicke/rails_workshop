@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Timeentries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Date</th>
+      <th>User</th>
+      <th>Contract</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timeentries.each do |timeentry| %>
+      <tr>
+        <td><%= timeentry.time %></td>
+        <td><%= timeentry.date %></td>
+        <td><%= timeentry.user %></td>
+        <td><%= timeentry.contract %></td>
+        <td><%= link_to 'Show', timeentry %></td>
+        <td><%= link_to 'Edit', edit_timeentry_path(timeentry) %></td>
+        <td><%= link_to 'Destroy', timeentry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timeentry', new_timeentry_path %>
