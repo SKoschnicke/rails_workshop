@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20150306080046) do
 
+  create_table "contracts", force: :cascade do |t|
+    t.integer  "hours",      limit: 4
+    t.decimal  "wage",                   precision: 10
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "client",     limit: 255
+    t.string   "comment",    limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.datetime "created_at",                                      null: false
