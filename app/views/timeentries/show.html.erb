@@ -20,5 +20,10 @@
   <%= @timeentry.contract %>
 </p>
 
+<p>
+  <strong>Tags:</strong>
+  <%= @timeentry.tags.pluck(:name).join(" ") %>
+</p>
+
 <%= link_to 'Edit', edit_timeentry_path(@timeentry) %> |
 <%= link_to 'Back', timeentries_path %>

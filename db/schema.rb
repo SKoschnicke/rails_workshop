@@ -11,13 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306080046) do
+ActiveRecord::Schema.define(version: 20150306114740) do
+
+  create_table "contracts", force: :cascade do |t|
+    t.integer  "hours",      limit: 4
+    t.decimal  "wage",                   precision: 10
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "client",     limit: 255
+    t.string   "comment",    limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "tags_timeentries", id: false, force: :cascade do |t|
     t.integer "timeentry_id", limit: 4, null: false
@@ -35,18 +49,6 @@ ActiveRecord::Schema.define(version: 20150306080046) do
 
   add_index "timeentries", ["contract_id"], name: "index_timeentries_on_contract_id", using: :btree
   add_index "timeentries", ["user_id"], name: "index_timeentries_on_user_id", using: :btree
-
-  create_table "contracts", force: :cascade do |t|
-    t.integer  "hours",      limit: 4
-    t.decimal  "wage",                   precision: 10
-    t.date     "start_date"
-    t.date     "end_date"
-    t.string   "client",     limit: 255
-    t.string   "comment",    limit: 255
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

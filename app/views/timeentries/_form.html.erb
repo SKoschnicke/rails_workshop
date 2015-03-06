@@ -23,6 +23,10 @@
     <%= f.label :contract_id %><br>
     <%= f.text_field :contract_id %>
   </div>
+  <div class="field">
+    <%= label_tag(:tags_string, "Tags") %><br>
+    <%= text_field_tag(:tags_string, @timeentry.tags.order(:name).pluck(:name).join(" ")) %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>
