@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root to: 'welcome#index'
   
-  # only use these when logged in
   devise_scope :user do
     root to: 'welcome#index'
   end
