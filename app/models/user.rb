@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :teams
 end
