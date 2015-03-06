@@ -12,12 +12,17 @@
 
 <p>
   <strong>User:</strong>
-  <%= @timeentry.user.email %>
+  <%= @timeentry.user.name %>
 </p>
 
 <p>
-  <strong>Contract:</strong>
-  <%= @timeentry.contract %>
+  <strong>Client:</strong>
+  <%= @timeentry.contract.try :client%>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @timeentry.comment %>
 </p>
 
 <p>
