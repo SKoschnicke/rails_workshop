@@ -11,4 +11,9 @@ class Contract < ActiveRecord::Base
     end
   end
 
+  def hours_fulfilled
+    self.timeentries.sum(:duration)
+    #self.timeentries.all.reduce{|a, b| a.duration + b.duration} / 60
+  end
+
 end

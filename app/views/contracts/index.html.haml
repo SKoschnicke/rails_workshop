@@ -2,33 +2,43 @@
 
 - @contracts.each do |contract|
   %div.panel.panel-primary
-  %table
-    %tbody
-      %tr
-        %th User
-        %td= contract.user.email
-      %tr
-        %th Hours
-        %td= contract.hours
-      %tr
-        %th Wage
-        %td= contract.wage
-      %tr
-        %th Start
-        %td= contract.start_date
-      %tr
-        %th End
-        %td= contract.end_date
-      %tr
-        %th Client
-        %td= contract.client
-      %tr
-        %th Comment
-        %td= contract.comment
-  %div.btn-group
-    = link_to 'Show', contract, class: 'btn'
-    = link_to 'Edit', edit_contract_path(contract), class: 'btn'
-    = link_to 'Destroy', contract, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'
+    %table
+      %tbody
+        %tr
+          %th User
+          %td= contract.user.email
+        %tr
+          %th Hours
+          %td= contract.hours
+        %tr
+          %th Wage
+          %td= contract.wage
+        %tr
+          %th Start
+          %td= contract.start_date
+        %tr
+          %th End
+          %td= contract.end_date
+        %tr
+          %th Client
+          %td= contract.client
+        %tr
+          %th Comment
+          %td= contract.comment
+
+    %h2 Completion
+    .progress{:style => "width: 50%; text-align: center"}
+      - value = contract.hours_fulfilled
+      .progress-bar{:role => "progressbar", "aria-valuenow" => value, "aria-valuemin" => 0, "aria-valuemax" =>  contract.hours, :style => "width: " + (value * 100/ contract.hours).to_s + "%;"}= (value).to_s + "/" + contract.hours.to_s + "h"
+
+    %button.btn.btn-primary{"data-toggle" => "collapse", :type => "button", "data-target" => "#collapseTimeentries", "aria-expanded" => "false", "aria-controls" => "collapseTimeentries"} Show Time entries
+    .collapse{:id => "collapseTimeentries"} Blubb
+
+
+    %div.btn-group{:role => "group"}
+      = link_to 'Show', contract, class: 'btn'
+      = link_to 'Edit', edit_contract_path(contract), class: 'btn'
+      = link_to 'Destroy', contract, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'
 %br
 
 = link_to 'New Contract', new_contract_path
