@@ -32,7 +32,20 @@
       .progress-bar{:role => "progressbar", "aria-valuenow" => value, "aria-valuemin" => 0, "aria-valuemax" =>  contract.hours, :style => "width: " + (value * 100/ contract.hours).to_s + "%;"}= (value).to_s + "/" + contract.hours.to_s + "h"
 
     %button.btn.btn-primary{"data-toggle" => "collapse", :type => "button", "data-target" => "#collapseTimeentries", "aria-expanded" => "false", "aria-controls" => "collapseTimeentries"} Show Time entries
-    .collapse{:id => "collapseTimeentries"} Blubb
+    .collapse{:id => "collapseTimeentries"}
+      %table.table
+        %table
+          %thead
+            %tr
+              %th Date
+              %th Duration
+              %th Tags
+          %tbody
+            - contract.timeentries.each do |timeentry|
+              %tr
+                %td timeentry.date
+                %td timeentry.duration
+                %td tags
 
 
     %div.btn-group{:role => "group"}
