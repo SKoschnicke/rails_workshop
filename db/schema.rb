@@ -42,9 +42,10 @@ ActiveRecord::Schema.define(version: 20150306114740) do
     t.date     "date"
     t.integer  "user_id",     limit: 4
     t.integer  "contract_id", limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "duration",    limit: 4
+    t.text     "comment",     limit: 65535
   end
 
   add_index "timeentries", ["contract_id"], name: "index_timeentries_on_contract_id", using: :btree
