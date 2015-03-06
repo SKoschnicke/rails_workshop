@@ -1,0 +1,29 @@
+<%= form_for(@timeentry) do |f| %>
+  <% if @timeentry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@timeentry.errors.count, "error") %> prohibited this timeentry from being saved:</h2>
+
+      <ul>
+      <% @timeentry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_id %><br>
+    <%= f.text_field :contract_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

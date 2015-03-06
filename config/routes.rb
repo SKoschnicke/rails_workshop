@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :tags
+
+  resources :timeentries
+
   resources :contracts
 
   devise_for :users
