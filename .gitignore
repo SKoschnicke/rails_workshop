@@ -7,9 +7,12 @@
 # Ignore bundler config.
 /.bundle
 .bash_history
+.bashrc
+
 
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 /tmp
 *~
+*.swp
