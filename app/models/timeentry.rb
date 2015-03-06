@@ -3,5 +3,5 @@ class Timeentry < ActiveRecord::Base
   belongs_to :user
   belongs_to :contract
   
-  validates :duration, numericality: {greater_than_or_equal_to: 0, only_integer: true}
+  validates :duration, numericality: {greater_than_or_equal_to: 0}
 end
