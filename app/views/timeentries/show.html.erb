@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @timeentry.duration %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @timeentry.date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @timeentry.user.email %>
+</p>
+
+<p>
+  <strong>Contract:</strong>
+  <%= @timeentry.contract %>
+</p>
+
+<%= link_to 'Edit', edit_timeentry_path(@timeentry) %> |
+<%= link_to 'Back', timeentries_path %>
