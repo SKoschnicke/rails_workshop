@@ -21,7 +21,14 @@
   </div>
   <div class="field">
     <%= f.label :contract_id %><br>
-    <%= f.text_field :contract_id %>
+    <%= f.select :contract_id,
+        #Contract.all.collect {|c| [ c.client, c.id ] }, 
+        Contract.where(user: current_user).collect {|c| [ c.client ] }, 
+        {include_blank: true} %>
+  </div>
+ <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
   </div>
   <div class="actions">
     <%= f.submit %>

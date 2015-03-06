@@ -70,6 +70,6 @@ class TimeentriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def timeentry_params
-      params.require(:timeentry).permit(:duration, :date, :user_id, :contract_id)
+      params.require(:timeentry).permit(:duration, :date, :user_id, :contract_id, :comment)
     end
 end

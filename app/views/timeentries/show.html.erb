@@ -16,8 +16,13 @@
 </p>
 
 <p>
-  <strong>Contract:</strong>
-  <%= @timeentry.contract %>
+  <strong>Client:</strong>
+  <%= @timeentry.contract.try :client%>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @timeentry.comment %>
 </p>
 
 <%= link_to 'Edit', edit_timeentry_path(@timeentry) %> |
