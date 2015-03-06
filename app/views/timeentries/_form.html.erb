@@ -22,8 +22,7 @@
   <div class="field">
     <%= f.label :contract_id %><br>
     <%= f.select :contract_id,
-        Contract.all.collect {|c| [ c.client, c.id ] }, 
-        #Contract.where(user: current_user).collect {|c| [ c.client ] }, 
+        Contract.where(user: current_user).collect {|c| [ c.client ] }, 
         {include_blank: true} %>
   </div>
  <div class="field">

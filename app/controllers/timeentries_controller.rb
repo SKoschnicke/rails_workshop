@@ -4,7 +4,7 @@ class TimeentriesController < ApplicationController
   # GET /timeentries
   # GET /timeentries.json
   def index
-    @timeentries = Timeentry.all
+    @timeentries = Timeentry.where(user: current_user)
   end
 
   # GET /timeentries/1

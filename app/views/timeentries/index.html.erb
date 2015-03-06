@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% Timeentry.where(user: current_user).each do |timeentry| %>
+    <% @timeentries.each do |timeentry| %>
       <tr>
         <td><%= timeentry.duration %></td>
         <td><%= timeentry.date %></td>
