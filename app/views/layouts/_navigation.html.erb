@@ -1,0 +1,18 @@
+
+<nav>
+<% if user_signed_in? %>
+  <%= link_to "View Teams", teams_path %><br>
+  <%= link_to "New Team", new_team_path %><br>
+  <br>
+  <%= link_to "View Contracts", contracts_path %><br>
+  <%= link_to "New Contract", new_contract_path %><br>
+  <br>
+  <%= link_to "View Timeentries", timeentries_path %><br>
+  <%= link_to "New Time Entry", new_timeentry_path %><br>
+  <br>
+  <%= link_to "Log out!", destroy_user_session_path, method: "delete" %>
+<% else %>
+  <%= link_to "Log in!", new_user_session_path %><br>
+  <%= link_to "Register!", new_user_registration_path %>
+<% end %>
+</nav>

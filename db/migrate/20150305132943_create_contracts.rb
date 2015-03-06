@@ -8,7 +8,7 @@ class CreateContracts < ActiveRecord::Migration
       t.string :client
       t.string :comment
       t.references :user
-        
+
       t.timestamps null: false
     end
   end
