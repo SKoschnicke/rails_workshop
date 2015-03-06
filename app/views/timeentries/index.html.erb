@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Time</th>
+      <th>Duration</th>
       <th>Date</th>
       <th>User</th>
       <th>Contract</th>
@@ -16,9 +16,9 @@
   <tbody>
     <% @timeentries.each do |timeentry| %>
       <tr>
-        <td><%= timeentry.time %></td>
+        <td><%= timeentry.duration %></td>
         <td><%= timeentry.date %></td>
-        <td><%= timeentry.user %></td>
+        <td><%= timeentry.user.inspect %></td>
         <td><%= timeentry.contract %></td>
         <td><%= link_to 'Show', timeentry %></td>
         <td><%= link_to 'Edit', edit_timeentry_path(timeentry) %></td>

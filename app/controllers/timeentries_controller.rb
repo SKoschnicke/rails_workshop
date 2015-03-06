@@ -25,6 +25,7 @@ class TimeentriesController < ApplicationController
   # POST /timeentries.json
   def create
     @timeentry = Timeentry.new(timeentry_params)
+    @timeentry.user = current_user
 
     respond_to do |format|
       if @timeentry.save
@@ -69,6 +70,6 @@ class TimeentriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def timeentry_params
-      params.require(:timeentry).permit(:time, :date, :user_id, :contract_id)
+      params.require(:timeentry).permit(:duration, :date, :user_id, :contract_id)
     end
 end
