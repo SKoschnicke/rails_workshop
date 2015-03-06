@@ -27,13 +27,7 @@ class TimeentriesController < ApplicationController
     @timeentry = Timeentry.new(timeentry_params)
     @timeentry.user = current_user
     
-    params[:tags_string].split(" ").each do |tag_name|
-      tag = Tag.where(name: tag_name).first
-      if tag.nil?
-        tag = Tag.create(name: tag_name)
-      end
-      @timeentry.tags << tag
-    end
+    add_tag_names(params[:tags_string].split(" "))
     
     respond_to do |format|
       if @timeentry.save
@@ -57,20 +51,9 @@ class TimeentriesController < ApplicationController
     added_tag_names = new_tag_names.reject{ |new_tag_name| old_tag_names.include? new_tag_name}
     removed_tags = old_tags.reject{ |old_tag| new_tag_names.include? old_tag.name}
     
-    added_tag_names.each do |tag_name|
-      tag = Tag.where(name: tag_name).first
-      if tag.nil?
-        tag = Tag.create(name: tag_name)
-      end
-      @timeentry.tags << tag
-    end
+    add_tag_names(added_tag_names)
     
-    @timeentry.tags.delete removed_tags
-    removed_tags.each do |tag|
-      if tag.timeentries.empty?
-        tag.destroy
-      end
-    end
+    remove_tags(removed_tags)
     
     respond_to do |format|
       if @timeentry.update(timeentry_params)
@@ -87,13 +70,8 @@ class TimeentriesController < ApplicationController
   # DELETE /timeentries/1.json
   def destroy
     
-    removed_tags = @timeentry.tags.all.to_a
+    remove_tags(@timeentry.tags.all.to_a)
     @timeentry.destroy
-    removed_tags.each do |tag|
-      if tag.timeentries.empty?
-        tag.destroy
-      end
-    end
     
     respond_to do |format|
       format.html { redirect_to timeentries_url, notice: 'Timeentry was successfully destroyed.' }
@@ -110,5 +88,24 @@ class TimeentriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def timeentry_params
       params.require(:timeentry).permit(:duration, :date, :user_id, :contract_id, :comment)
+    end
+  
+    def add_tag_names tag_names
+      tag_names.each do |tag_name|
+        tag = Tag.where(name: tag_name).first
+        if tag.nil?
+          tag = Tag.create(name: tag_name)
+        end
+        @timeentry.tags << tag
+      end
+    end
+    
+    def remove_tags tags
+      @timeentry.tags.delete tags
+      tags.each do |tag|
+        if tag.timeentries.empty?
+          tag.destroy
+        end
+      end
     end
 end
