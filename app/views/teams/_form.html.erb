@@ -15,6 +15,11 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <% User.all.each do |u| %>
+      <%= u.email %>
+    <% end %>
+</div>
   <div class="actions">
     <%= f.submit %>
   </div>
