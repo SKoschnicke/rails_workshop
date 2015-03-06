@@ -1,0 +1,12 @@
+%p#notice= notice
+%h1 Listing Users
+%table
+  %thead
+    %tr
+      %th Email
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+%br/
+= link_to 'New User', new_user_registration_path
