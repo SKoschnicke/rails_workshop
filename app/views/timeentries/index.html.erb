@@ -18,7 +18,7 @@
       <tr>
         <td><%= timeentry.duration %></td>
         <td><%= timeentry.date %></td>
-        <td><%= timeentry.user.inspect %></td>
+        <td><%= timeentry.user.email %></td>
         <td><%= timeentry.contract %></td>
         <td><%= link_to 'Show', timeentry %></td>
         <td><%= link_to 'Edit', edit_timeentry_path(timeentry) %></td>
