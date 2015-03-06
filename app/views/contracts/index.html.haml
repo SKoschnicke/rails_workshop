@@ -1,0 +1,30 @@
+%h1 Your Contracts
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Hours
+      %th Wage
+      %th Start
+      %th End
+      %th Client
+      %th Comment
+      %th{:colspan => "3"}
+  %tbody
+    - @contracts.each do |contract|
+      %tr
+        %td= contract.user.email
+        %td= contract.hours
+        %td= contract.wage
+        %td= contract.start_date
+        %td= contract.end_date
+        %td= contract.client
+        %td= contract.comment
+        %td= link_to 'Show', contract
+        %td= link_to 'Edit', edit_contract_path(contract)
+        %td= link_to 'Destroy', contract, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Contract', new_contract_path

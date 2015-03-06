@@ -1,0 +1,25 @@
+%p
+  %strong User:
+  = @contract.user.email
+
+%p
+  %strong Hours:
+  = @contract.hours
+%p
+  %strong Wage:
+  = @contract.wage
+%p
+  %strong Start:
+  = @contract.start_date
+%p
+  %strong End:
+  = @contract.end_date
+%p
+  %strong Client:
+  = @contract.client
+%p
+  %strong Comment:
+  = @contract.comment
+= link_to 'Edit', edit_contract_path(@contract)
+|
+\#{link_to 'Back', contracts_path}
