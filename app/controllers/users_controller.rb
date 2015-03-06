@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: :show
-  validates :name, presence: true
 
   # GET /users
   # GET /users.json
