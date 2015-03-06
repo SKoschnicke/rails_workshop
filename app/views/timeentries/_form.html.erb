@@ -32,7 +32,7 @@
   </div>
   <div class="field">
     <%= label_tag(:tags_string, "Tags") %><br>
-    <%= text_field_tag(:tags_string, @timeentry.tags.order(:name).pluck(:name).join(" ")) %>
+    <%= text_field_tag(:tags_string, @timeentry.tags_string) %>
     </div>
   <div class="actions">
     <%= f.submit %>

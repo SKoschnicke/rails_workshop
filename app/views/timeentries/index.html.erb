@@ -23,7 +23,7 @@
         <td><%= timeentry.user.name %></td>
         <td><%= timeentry.contract.try :client%></td>
         <td><%= timeentry.comment %></td>
-        <td><%= timeentry.tags.pluck(:name).join(" ") %></td>
+        <td><%= timeentry.tags_string %></td>
         <td><%= link_to 'Show', timeentry %></td>
         <td><%= link_to 'Edit', edit_timeentry_path(timeentry) %></td>
         <td><%= link_to 'Destroy', timeentry, method: :delete, data: { confirm: 'Are you sure?' } %></td>

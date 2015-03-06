@@ -4,4 +4,8 @@ class Timeentry < ActiveRecord::Base
   belongs_to :contract
 
   validates :duration, numericality: {greater_than_or_equal_to: 0}
+  
+  def tags_string
+    tags.order(:name).pluck(:name).join(" ")
+  end
 end

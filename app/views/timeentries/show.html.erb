@@ -27,7 +27,7 @@
 
 <p>
   <strong>Tags:</strong>
-  <%= @timeentry.tags.pluck(:name).join(" ") %>
+  <%= @timeentry.tags_string %>
 </p>
 
 <%= link_to 'Edit', edit_timeentry_path(@timeentry) %> |
