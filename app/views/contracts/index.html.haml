@@ -3,6 +3,7 @@
 %table
   %thead
     %tr
+      %th User
       %th Hours
       %th Wage
       %th Start
@@ -13,6 +14,7 @@
   %tbody
     - @contracts.each do |contract|
       %tr
+        %td= contract.user.email
         %td= contract.hours
         %td= contract.wage
         %td= contract.start_date

@@ -7,6 +7,11 @@
       %ul
         - @contract.errors.full_messages.each do |message|
           %li= message
+
+  .field
+    = f.label :user_id
+    = f.select :user_id, User.all.collect {|u| [ u.email, u.id ] }
+
   .field
     = f.label :hours
     %br/
